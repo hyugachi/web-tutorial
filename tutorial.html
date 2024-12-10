@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tutorial</title>
     <link rel="stylesheet" href="css/tutorial.css"> <!-- Gaya CSS Anda -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/monokai.min.css">
+
 </head>
 <body>
     <header>
@@ -22,125 +24,1065 @@
     <main>
         <div id="nmap" class="tutorial-section">
             <h1>Nmap Essentials</h1>
-            <p>Konten tutorial Nmap...</p>
-            <!-- Tambahkan konten dari nmap.html di sini -->
-        </div>
-
-        <div id="hydra" class="tutorial-section" style="display:none;">
-            <h1>Hydra Fundamentals</h1>
-            <p>Konten tutorial Hydra...</p>
-            <main>
-                <article>
-                    <section id="pendahuluan">
-                        <h1 class="h1-pengenalan">Tutorial Lengkap Hydra</h1>
-                        <div class="vpn-image-container">
-                            <img src="video/hydra.svg" alt="Ilustrasi Hydra" class="hydra-image">
+            <article>
+                <section id="pengenalan">
+                    <h1 class="h1-pengenalan">Pengenalan Nmap</h1>
+                    <div class="nmap-icon-container">
+                        <img src="video/nmap.svg" alt="Ikon Nmap" class="nmap-icon">
+                    </div>
+                    <p>Nmap (Network Mapper) adalah alat open source yang sangat powerful untuk eksplorasi jaringan dan audit keamanan. Dikembangkan oleh Gordon Lyon, Nmap digunakan oleh administrator sistem dan profesional keamanan untuk menemukan host dan layanan di jaringan komputer, serta untuk mendeteksi potensi kerentanan.</p>
+                </section>
+                
+                <section id="instalasi">
+                    <h2>Instalasi Nmap</h2>
+                    <p>Untuk menginstal Nmap di sistem Linux berbasis Debian atau Ubuntu, gunakan perintah berikut di terminal:</p>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="language">bash</span>
+                            <button class="copy-btn">
+                                <span>Copy</span>
+                            </button>
                         </div>
-                        <p>THC-Hydra adalah alat pengujian keamanan open-source yang digunakan untuk menguji kekuatan password pada berbagai protokol dan layanan. Artikel ini akan membahas fundamental Hydra dan penggunaannya untuk keperluan pengujian keamanan yang sah dan beretika.</p>
-                        <p><strong>Catatan Penting</strong>: Penggunaan Hydra harus selalu dalam konteks pengujian keamanan yang legal dan beretika, dengan izin tertulis dari pemilik sistem yang diuji.</p>
-                    </section>
-        
-                    <section id="fitur-utama">
-                        <h2>Fitur Utama Hydra</h2>
-                        <ul>
-                            <li>Mendukung lebih dari 50 protokol berbeda</li>
-                            <li>Kemampuan multi-threading yang efisien</li>
-                            <li>Fleksibilitas dalam penggunaan wordlist</li>
-                            <li>Mendukung berbagai metode otentikasi</li>
-                            <li>Dapat digunakan di berbagai sistem operasi</li>
-                        </ul>
-                    </section>
-        
-                    <section id="instalasi">
-                        <h2>Cara Instalasi</h2>
-                        <h3>Di Linux (Debian/Ubuntu):</h3>
-                        <pre><code>sudo apt update
-         sudo apt install hydra</code></pre>
-                        
-                        <h3>Di Kali Linux:</h3>
-                        <pre><code># Biasanya sudah terinstal
-         # Jika belum:
-        sudo apt install hydra</code></pre>
-                    </section>
-        
-                    <section id="penggunaan-dasar">
-                        <h2>Penggunaan Dasar</h2>
-                        <p>Sintaks dasar Hydra sangat straightforward:</p>
-                        <pre><code>hydra -l [username] -P [wordlist] [target] [protocol]</code></pre>
-                        
-                        <h3>Parameter Penting:</h3>
-                        <ul>
-                            <li><code>-l</code>: Username tunggal</li>
-                            <li><code>-L</code>: File daftar username</li>
-                            <li><code>-p</code>: Password tunggal</li>
-                            <li><code>-P</code>: File wordlist password</li>
-                            <li><code>-t</code>: Jumlah thread (default: 16)</li>
-                            <li><code>-v</code>: Mode verbose</li>
-                        </ul>
-                    </section>
-        
-                    <section id="contoh-penggunaan">
-                        <h2>Contoh Penggunaan</h2>
-                        
-                        <h3>1. Pengujian FTP</h3>
-                        <pre><code>hydra -l admin -P wordlist.txt ftp://192.168.1.100</code></pre>
-                        <p>Perintah ini akan mencoba login ke server FTP dengan username 'admin' dan password dari wordlist.</p>
-                        
-                        <h3>2. Pengujian SSH</h3>
-                        <pre><code>hydra -l user -P passwords.txt -t 4 ssh://192.168.1.100</code></pre>
-                        <p>Menggunakan 4 thread untuk menguji koneksi SSH.</p>
-                        
-                        <h3>3. Pengujian Form Web</h3>
-                        <code>
-                            hydra -l admin -P wordlist.txt 192.168.1.100 http-post-form <br>
-                            "/login.php:username=^USER^&password=^PASS^:Login failed"
-                        </code>
-                        
-                        <p>Menguji form login web dengan metode POST.</p>
-                    </section>
-        
-                    <section id="best-practices">
-                        <h2>Best Practices</h2>
-                        <ul>
-                            <li>Selalu dapatkan izin tertulis sebelum melakukan pengujian</li>
-                            <li>Gunakan dalam lingkungan testing yang terkontrol</li>
-                            <li>Dokumentasikan semua aktivitas pengujian</li>
-                            <li>Batasi jumlah percobaan untuk menghindari DoS</li>
-                            <li>Enkripsi dan simpan hasil pengujian dengan aman</li>
-                        </ul>
-                    </section>
-        
-                    <section id="tips-keamanan">
-                        <h2>Tips Keamanan</h2>
-                        <ul>
-                            <li>Jangan gunakan di jaringan produksi tanpa izin</li>
-                            <li>Selalu backup sistem sebelum pengujian</li>
-                            <li>Monitor penggunaan resource sistem</li>
-                            <li>Hapus log dan file temporary setelah selesai</li>
-                            <li>Jaga kerahasiaan hasil pengujian</li>
-                        </ul>
-                    </section>
-        
-                    <section id="kesimpulan">
-                        <h2>Kesimpulan</h2>
-                        <p>Hydra adalah tools yang powerful untuk pengujian keamanan password. Penggunaan yang bertanggung jawab dan sesuai etika sangat penting. Selalu:</p>
-                        <ul>
-                            <li>Dapatkan izin tertulis</li>
-                            <li>Dokumentasikan pengujian</li>
-                            <li>Gunakan untuk meningkatkan keamanan</li>
-                            <li>Patuhi regulasi yang berlaku</li>
-                        </ul>
-                        <p>Ingat bahwa tujuan utama penggunaan Hydra adalah untuk meningkatkan keamanan sistem, bukan untuk mengeksploitasinya.</p>
-                    </section>
-                </article>
-            </main>
-            <!-- Tambahkan konten dari hydra.html di sini -->
+                        <pre><code>sudo apt-get update && sudo apt-get install nmap</code></pre>
+                    </div>
+                    <p>Untuk sistem operasi lain, kunjungi <a href="https://nmap.org/download.html" style="color: cadetblue;">situs resmi Nmap</a> untuk petunjuk instalasi.</p>
+                </section>
+                
+                <section id="penggunaan-dasar">
+                    <h2>Penggunaan Dasar Nmap</h2>
+                    <p>Berikut adalah contoh penggunaan dasar Nmap untuk memindai sebuah alamat IP:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="language">Terminal</span>
+                            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                        </div>
+                        <div class="code-content">
+                            <code>nmap 192.168.1.1</code>
+                        </div>
+                    </div>
+                    <p>Perintah ini akan memindai alamat IP 192.168.1.1 untuk menemukan port-port yang terbuka. Nmap secara default akan memindai 1000 port yang paling umum digunakan.</p>
+                </section>
+                
+                <section id="perintah-lanjutan">
+                    <h2>Perintah Lanjutan Nmap</h2>
+                    <p>Nmap menyediakan berbagai opsi untuk pemindaian yang lebih spesifik dan mendalam. Berikut beberapa contoh perintah lanjutan:</p>
+                    <ul>
+                        <li><div class="code-container">
+                            <div class="code-header">
+                                <span class="language">Terminal</span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>nmap -sV 192.168.1.1</code>
+                            </div>
+                        </div> - Mendeteksi versi layanan yang berjalan pada port-port terbuka</li>
+                        <li><div class="code-container">
+                            <div class="code-header">
+                                <span class="language">Terminal</span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>nmap -p- 192.168.1.1</code>
+                            </div>
+                        </div> - Memindai semua 65535 port TCP</li>
+                        <li><div class="code-container">
+                            <div class="code-header">
+                                <span class="language">Terminal</span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>nmap -O 192.168.1.1</code>
+                            </div>
+                        </div> - Mencoba mendeteksi sistem operasi target</li>
+                        <li><div class="code-container">
+                            <div class="code-header">
+                                <span class="language">Terminal</span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>nmap -A 192.168.1.1</code>
+                            </div>
+                        </div> - Menjalankan pemindaian agresif (OS detection, version scanning, script scanning, dan traceroute)</li>
+                    </ul>
+                </section>
+            </article>
         </div>
 
-        <div id="osi" class="tutorial-section" style="display:none;">
+        <div id="hydra" class="tutorial-section">
+            <h1>Hydra Fundamentals</h1>
+            <article>
+                <section id="pendahuluan">
+                    <h1 class="h1-pengenalan">Tutorial Lengkap Hydra</h1>
+                    <div class="vpn-image-container">
+                        <img src="video/hydra.svg" alt="Ilustrasi Hydra" class="hydra-image">
+                    </div>
+                    <p>THC-Hydra adalah alat pengujian keamanan open-source yang digunakan untuk menguji kekuatan password pada berbagai protokol dan layanan. Artikel ini akan membahas fundamental Hydra dan penggunaannya untuk keperluan pengujian keamanan yang sah dan beretika.</p>
+                    <p><strong>Catatan Penting</strong>: Penggunaan Hydra harus selalu dalam konteks pengujian keamanan yang legal dan beretika, dengan izin tertulis dari pemilik sistem yang diuji.</p>
+                </section>
+        
+                <section id="fitur-utama">
+                    <h2>Fitur Utama Hydra</h2>
+                    <ul>
+                        <li>Mendukung lebih dari 50 protokol berbeda</li>
+                        <li>Kemampuan multi-threading yang efisien</li>
+                        <li>Fleksibilitas dalam penggunaan wordlist</li>
+                        <li>Mendukung berbagai metode otentikasi</li>
+                        <li>Dapat digunakan di berbagai sistem operasi</li>
+                    </ul>
+                </section>
+        
+                <section id="instalasi">
+                    <h2>Cara Instalasi</h2>
+                    <h3>Di Linux (Debian/Ubuntu):</h3>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="language">Terminal</span>
+                            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                        </div>
+                        <div class="code-content">
+                            <code>sudo apt update
+         sudo apt install hydra</code>
+                        </div>
+                    </div>
+                    
+                    <h3>Di Kali Linux:</h3>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="language">Terminal</span>
+                            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                        </div>
+                        <div class="code-content">
+                            <code># Biasanya sudah terinstal
+         # Jika belum:
+        sudo apt install hydra</code>
+                        </div>
+                    </div>
+                </section>
+        
+                <section id="penggunaan-dasar">
+                    <h2>Penggunaan Dasar</h2>
+                    <p>Sintaks dasar Hydra sangat straightforward:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="language">Terminal</span>
+                            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                        </div>
+                        <div class="code-content">
+                            <code>hydra -l [username] -P [wordlist] [target] [protocol]</code>
+                        </div>
+                    </div>
+                    
+                    <h3>Parameter Penting:</h3>
+                    <ul>
+                        <li><div class="code-container">
+                            <div class="code-header">
+                                <span class="language">Terminal</span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>-l</code>
+                            </div>
+                        </div>: Username tunggal</li>
+                        <li><div class="code-container">
+                            <div class="code-header">
+                                <span class="language">Terminal</span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>-L</code>
+                            </div>
+                        </div>: File daftar username</li>
+                        <li><div class="code-container">
+                            <div class="code-header">
+                                <span class="language">Terminal</span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>-p</code>
+                            </div>
+                        </div>: Password tunggal</li>
+                        <li><div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>-P</code>
+                            </div>
+                        </div>: File wordlist password</li>
+                        <li><div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>-t</code>
+                            </div>
+                        </div>: Jumlah thread (default: 16)</li>
+                        <li><div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>-v</code>
+                            </div>
+                        </div>: Mode verbose</li>
+                    </ul>
+                </section>
+        
+                <section id="contoh-penggunaan">
+                    <h2>Contoh Penggunaan</h2>
+                    
+                    <h3>1. Pengujian FTP</h3>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span></span>
+                            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                        </div>
+                        <div class="code-content">
+                            <code>hydra -l admin -P wordlist.txt ftp://192.168.1.100</code>
+                        </div>
+                    </div>
+                    <p>Perintah ini akan mencoba login ke server FTP dengan username 'admin' dan password dari wordlist.</p>
+                    
+                    <h3>2. Pengujian SSH</h3>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span></span>
+                            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                        </div>
+                        <div class="code-content">
+                            <code>hydra -l user -P passwords.txt -t 4 ssh://192.168.1.100</code>
+                        </div>
+                    </div>
+                    <p>Menggunakan 4 thread untuk menguji koneksi SSH.</p>
+                    
+                    <h3>3. Pengujian Form Web</h3>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span></span>
+                            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                        </div>
+                        <div class="code-content">
+                            <code>
+                                hydra -l admin -P wordlist.txt 192.168.1.100 http-post-form <br>
+                                "/login.php:username=^USER^&password=^PASS^:Login failed"
+                            </code>
+                        </div>
+                    </div>
+                    
+                    <p>Menguji form login web dengan metode POST.</p>
+                </section>
+        
+                <section id="best-practices">
+                    <h2>Best Practices</h2>
+                    <ul>
+                        <li>Selalu dapatkan izin tertulis sebelum melakukan pengujian</li>
+                        <li>Gunakan dalam lingkungan testing yang terkontrol</li>
+                        <li>Dokumentasikan semua aktivitas pengujian</li>
+                        <li>Batasi jumlah percobaan untuk menghindari DoS</li>
+                        <li>Enkripsi dan simpan hasil pengujian dengan aman</li>
+                    </ul>
+                </section>
+        
+                <section id="tips-keamanan">
+                    <h2>Tips Keamanan</h2>
+                    <ul>
+                        <li>Jangan gunakan di jaringan produksi tanpa izin</li>
+                        <li>Selalu backup sistem sebelum pengujian</li>
+                        <li>Monitor penggunaan resource sistem</li>
+                        <li>Hapus log dan file temporary setelah selesai</li>
+                        <li>Jaga kerahasiaan hasil pengujian</li>
+                    </ul>
+                </section>
+        
+                <section id="kesimpulan">
+                    <h2>Kesimpulan</h2>
+                    <p>Hydra adalah tools yang powerful untuk pengujian keamanan password. Penggunaan yang bertanggung jawab dan sesuai etika sangat penting. Selalu:</p>
+                    <ul>
+                        <li>Dapatkan izin tertulis</li>
+                        <li>Dokumentasikan pengujian</li>
+                        <li>Gunakan untuk meningkatkan keamanan</li>
+                        <li>Patuhi regulasi yang berlaku</li>
+                    </ul>
+                    <p>Ingat bahwa tujuan utama penggunaan Hydra adalah untuk meningkatkan keamanan sistem, bukan untuk mengeksploitasinya.</p>
+                </section>
+            </article>
+        </div>
+
+        <div id="osi" class="tutorial-section">
             <h1>OSI Layer</h1>
-            <p>Konten tutorial OSI Layer...</p>
-            <!-- Tambahkan konten dari osi-layer.html di sini -->
+            <article>
+                <section id="pengenalan">
+                    <h1 class="h1-pengenalan">Pengenalan OSI Layer</h1>
+                    <div class="gif-container">
+                        <img src="video/osi-layer.gif" alt="Animasi OSI Layer" class="osi-layer-gif">
+                    </div>
+                    <p>Model OSI (Open Systems Interconnection) adalah kerangka konseptual yang membagi proses komunikasi jaringan menjadi tujuh lapisan berbeda. Dikembangkan oleh ISO pada tahun 1984, model ini menyediakan standar untuk memahami aliran data dalam jaringan komputer, serta memecahkan masalah jaringan secara lebih efisien.</p>
+                </section>
+                
+                <section id="lapisan-osi">
+                    <h2>7 Lapisan OSI dan Fungsinya</h2>
+                    <ol>
+                        <li><strong>Application Layer</strong>
+                            <p>Lapisan teratas yang berinteraksi langsung dengan pengguna. Menyediakan antarmuka untuk aplikasi seperti email, browser, dan FTP.</p>
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <span></span>
+                                    <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                                </div>
+                                <div class="code-content">
+                                    <code>Protokol: HTTP, FTP, SMTP, DNS</code>
+                                </div>
+                            </div>
+                            <p><strong>Contoh:</strong> Membuka browser web atau aplikasi email.</p>
+                        </li>
+                        <li><strong>Presentation Layer</strong>
+                            <p>Bertanggung jawab untuk format dan enkripsi data. Menangani kompresi dan dekompresi data, serta mengkonversi data ke format yang sesuai.</p>
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <span></span>
+                                    <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                                </div>
+                                <div class="code-content">
+                                    <code>Contoh: JPEG, GIF, SSL/TLS</code>
+                                </div>
+                            </div>
+                        </li>
+                        <li><strong>Session Layer</strong>
+                            <p>Mengelola sesi komunikasi antar aplikasi, seperti pembentukan, pemeliharaan, dan pemutusan sesi.</p>
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <span></span>
+                                    <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                                </div>
+                                <div class="code-content">
+                                    <code>Contoh: NetBIOS, RPC</code>
+                                </div>
+                            </div>
+                        </li>
+                        <li><strong>Transport Layer</strong>
+                            <p>Memastikan pengiriman data end-to-end yang andal, menangani segmentasi data, dan kontrol aliran.</p>
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <span></span>
+                                    <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                                </div>
+                                <div class="code-content">
+                                    <code>Protokol: TCP, UDP</code>
+                                </div>
+                            </div>
+                            <p><strong>Contoh:</strong> Memastikan file yang dikirim sampai dengan utuh.</p>
+                        </li>
+                        <li><strong>Network Layer</strong>
+                            <p>Menangani routing dan pengalamatan logis, serta menentukan jalur terbaik untuk pengiriman data.</p>
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <span></span>
+                                    <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                                </div>
+                                <div class="code-content">
+                                    <code>Protokol: IP (IPv4, IPv6)</code>
+                                </div>
+                            </div>
+                            <p><strong>Contoh:</strong> Router beroperasi di lapisan ini.</p>
+                        </li>
+                        <li><strong>Data Link Layer</strong>
+                            <p>Mengelola komunikasi point-to-point, mendeteksi dan memperbaiki kesalahan pada lapisan fisik, serta mengatur akses ke media transmisi.</p>
+                            <p><strong>Contoh:</strong> Switch dan Bridge bekerja di lapisan ini.</p>
+                        </li>
+                        <li><strong>Physical Layer</strong>
+                            <p>Menangani transmisi bit mentah melalui media fisik, seperti sinyal listrik atau optik. Mendefinisikan karakteristik fisik jaringan, termasuk kabel, hub, dan repeater.</p>
+                            <p><strong>Contoh:</strong> Kabel dan Hub.</p>
+                        </li>
+                    </ol>
+                </section>
+                
+                <section id="cara-kerja">
+                    <h2>Cara Kerja OSI Layer</h2>
+                    <p>Proses komunikasi di OSI Layer melibatkan dua langkah utama: <strong>Enkapsulasi</strong> dan <strong>De-enkapsulasi</strong>.</p>
+                    
+                    <ul>
+                        <li><strong>Proses Enkapsulasi:</strong> Data bergerak dari Application Layer ke Physical Layer. Setiap lapisan menambahkan informasi header-nya sendiri, sehingga data terbungkus di setiap lapisan.</li>
+                        <li><strong>Proses De-enkapsulasi:</strong> Data diterima dari Physical Layer dan dibuka di setiap lapisan hingga mencapai Application Layer, kembali ke bentuk aslinya.</li>
+                    </ul>
+                </section>
+                
+                <section id="manfaat">
+                    <h2>Manfaat Model OSI</h2>
+                    <ul>
+                        <li><strong>Standardisasi:</strong> Menyediakan standar universal untuk komunikasi jaringan yang memungkinkan perangkat berbeda untuk berkomunikasi.</li>
+                        <li><strong>Modularitas:</strong> Memecah fungsi kompleks menjadi bagian yang lebih sederhana untuk memudahkan pengembangan dan pemecahan masalah.</li>
+                        <li><strong>Interoperabilitas:</strong> Memungkinkan perangkat dari vendor yang berbeda untuk bekerja sama dalam jaringan yang sama.</li>
+                    </ul>
+                </section>
+            </article>
+        </div>
+
+        <div id="html" class="tutorial-section">
+            <h1>HTML Essentials</h1>
+            <article>
+                <section id="intro">
+                    <h1>Pengantar HTML</h1>
+                    <p>HTML (HyperText Markup Language) adalah bahasa standar yang digunakan untuk membuat dan menyusun halaman web. HTML menggunakan elemen-elemen markup untuk menentukan struktur dan konten dari halaman web.</p>
+                    <p>HTML adalah fondasi dari semua website yang ada di internet.</p>
+                </section>
+            
+                <section id="elemen-dasar">
+                    <h2>Elemen Dasar HTML</h2>
+                    <ul>
+                        <li><strong>Tag HTML:</strong> Tag digunakan untuk menandai elemen dalam HTML. Contoh: <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>&lt;p&gt;</code>
+                            </div>
+                        </div>, <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>&lt;h1&gt;</code>
+                            </div>
+                        </div>.</li>
+                        <li><strong>Atribut:</strong> Atribut memberikan informasi tambahan untuk elemen HTML. Contoh: <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>&lt;a href="url"&gt;</code>
+                            </div>
+                        </div>.</li>
+                        <li><strong>Konten:</strong> Konten adalah teks atau elemen lain yang terdapat di dalam sebuah tag.</li>
+                    </ul>
+                </section>
+            
+                <section id="contoh-struktur">
+                    <h2>Contoh Struktur HTML Dasar</h2>
+                    <p>Berikut adalah contoh kode HTML dasar:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span></span>
+                            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                        </div>
+                        <div class="code-content">
+                            <code>&lt;!DOCTYPE html&gt;
+            &lt;html&gt;
+            &lt;head&gt;
+                &lt;title&gt;Halaman Web Sederhana&lt;/title&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+                &lt;h1&gt;Selamat Datang&lt;/h1&gt;
+                &lt;p&gt;Ini adalah contoh halaman HTML.&lt;/p&gt;
+                &lt;a href="https://example.com"&gt;Kunjungi Website&lt;/a&gt;
+            &lt;/body&gt;
+            &lt;/html&gt;</code>
+                        </div>
+                    </div>
+                </section>
+            
+                <section id="elemen-umum">
+                    <h2>Elemen Umum HTML</h2>
+                    <ul>
+                        <li><strong>&lt;h1&gt; hingga &lt;h6&gt;:</strong> Digunakan untuk judul dengan tingkat kepentingan yang berbeda.</li>
+                        <li><strong>&lt;p&gt;:</strong> Digunakan untuk membuat paragraf.</li>
+                        <li><strong>&lt;a&gt;:</strong> Elemen hyperlink untuk membuat tautan ke halaman lain.</li>
+                        <li><strong>&lt;img&gt;:</strong> Digunakan untuk menampilkan gambar.</li>
+                        <li><strong>&lt;ul&gt; dan &lt;ol&gt;:</strong> Membuat daftar (unordered dan ordered).</li>
+                        <li><strong>&lt;div&gt;:</strong> Elemen container untuk mengelompokkan elemen lain.</li>
+                    </ul>
+                </section>
+            
+                <section id="tips-praktis">
+                    <h2>Tips Praktis</h2>
+                    <ul>
+                        <li>Selalu gunakan <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>&lt;!DOCTYPE html&gt;</code>
+                            </div>
+                        </div> untuk memastikan kompatibilitas.</li>
+                        <li>Gunakan tag <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>&lt;title&gt;</code>
+                            </div>
+                        </div> untuk memberikan judul pada halaman web Anda.</li>
+                        <li>Gunakan tag <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>&lt;meta charset="UTF-8"&gt;</code>
+                            </div>
+                        </div> untuk mendukung karakter non-ASCII.</li>
+                        <li>Gunakan elemen heading secara hierarkis untuk meningkatkan SEO dan aksesibilitas.</li>
+                    </ul>
+                </section>
+            
+                <section id="contoh-lanjutan">
+                    <h2>Contoh Halaman HTML Sederhana</h2>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span></span>
+                            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                        </div>
+                        <div class="code-content">
+                            <code>&lt;!DOCTYPE html&gt;
+            &lt;html&gt;
+            &lt;head&gt;
+                &lt;title&gt;Halaman HTML Sederhana&lt;/title&gt;
+                &lt;style&gt;
+                    body {
+                        font-family: Arial, sans-serif;
+                        line-height: 1.6;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    header {
+                        background: #333;
+                        color: #fff;
+                        padding: 10px 15px;
+                        text-align: center;
+                    }
+                    footer {
+                        background: #333;
+                        color: #fff;
+                        text-align: center;
+                        padding: 10px 15px;
+                        position: fixed;
+                        bottom: 0;
+                        width: 100%;
+                    }
+                &lt;/style&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+                &lt;header&gt;Halaman HTML Sederhana&lt;/header&gt;
+                &lt;main&gt;
+                    &lt;h1&gt;Selamat Datang&lt;/h1&gt;
+                    &lt;p&gt;Ini adalah contoh halaman HTML dengan header dan footer.&lt;/p&gt;
+                &lt;/main&gt;
+                &lt;footer&gt;&amp;copy; 2024 Tutorial HTML&lt;/footer&gt;
+            &lt;/body&gt;
+            &lt;/html&gt;</code>
+                        </div>
+                    </div>
+                </section>
+            
+                <section id="kesimpulan">
+                    <h2>Kesimpulan</h2>
+                    <p>HTML adalah bahasa markup dasar untuk membuat website. Dengan memahami elemen-elemen dasar, Anda dapat mulai membuat halaman web sederhana dan terus mengembangkannya dengan elemen yang lebih kompleks.</p>
+                    <p>Selamat belajar dan bereksperimen dengan HTML!</p>
+                </section>
+            </article>
+        </div>
+
+        <div id="css" class="tutorial-section">
+            <h1>CSS Fundamentals</h1>
+            <article>
+                <section id="intro-css">
+                    <h1>Pengantar CSS</h1>
+                    <p>CSS (Cascading Style Sheets) digunakan untuk mengatur gaya dan tampilan halaman web. Dengan CSS, Anda dapat mengubah warna, font, layout, dan banyak elemen visual lainnya di halaman HTML.</p>
+                    <p>CSS memungkinkan desainer web untuk memisahkan konten dari desain, memberikan lebih banyak kontrol terhadap layout dan penampilan halaman web.</p>
+                </section>
+            
+                <section id="elemen-dasar-css">
+                    <h2>Elemen Dasar CSS</h2>
+                    <ul>
+                        <li><strong>Selektor:</strong> Digunakan untuk memilih elemen HTML yang ingin diberi gaya. Contoh: <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>p</code>
+                            </div>
+                        </div>, <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>#id</code>
+                            </div>
+                        </div>, <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>.class</code>
+                            </div>
+                        </div>.</li>
+                        <li><strong>Properti:</strong> Mengatur gaya atau atribut elemen. Contoh: <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>color</code>
+                            </div>
+                        </div>, <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>font-size</code>
+                            </div>
+                        </div>, <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>margin</code>
+                            </div>
+                        </div>.</li>
+                        <li><strong>Nilai:</strong> Menentukan nilai untuk properti. Contoh: <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>red</code>
+                            </div>
+                        </div>, <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>16px</code>
+                            </div>
+                        </div>, <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>10px</code>
+                            </div>
+                        </div>.</li>
+                    </ul>
+                </section>
+            
+                <section id="contoh-struktur-css">
+                    <h2>Contoh Struktur CSS</h2>
+                    <p>Berikut adalah contoh penggunaan CSS di dalam halaman HTML:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span></span>
+                            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                        </div>
+                        <div class="code-content">
+                            <code>p {
+                color: blue;
+                font-size: 16px;
+            }
+            
+            h1 {
+                color: red;
+                text-align: center;
+            }</code>
+                        </div>
+                    </div>
+                </section>
+            
+                <section id="penulisan-css">
+                    <h2>Penulisan CSS</h2>
+                    <ul>
+                        <li><strong>Inline:</strong> Menulis CSS langsung di tag HTML menggunakan atribut <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>style</code>
+                            </div>
+                        </div>. Contoh: <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>&lt;p style="color: red;"&gt;...</code>
+                            </div>
+                        </div>.</li>
+                        <li><strong>Internal:</strong> Menulis CSS di dalam tag <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>&lt;style&gt;</code>
+                            </div>
+                        </div> di dalam <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>&lt;head&gt;</code>
+                            </div>
+                        </div>.</li>
+                        <li><strong>Eksternal:</strong> Menulis CSS di dalam file terpisah dengan ekstensi <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>.css</code>
+                            </div>
+                        </div> dan menghubungkannya dengan tag <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>&lt;link&gt;</code>
+                            </div>
+                        </div> di dalam <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>&lt;head&gt;</code>
+                            </div>
+                        </div>.</li>
+                    </ul>
+                </section>
+            
+                <section id="contoh-css">
+                    <h2>Contoh Halaman HTML dengan CSS</h2>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span></span>
+                            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                        </div>
+                        <div class="code-content">
+                            <code>&lt;!DOCTYPE html&gt;
+            &lt;html&gt;
+            &lt;head&gt;
+                &lt;title&gt;Halaman CSS&lt;/title&gt;
+                &lt;style&gt;
+                    body {
+                        font-family: Arial, sans-serif;
+                        background-color: #f4f4f4;
+                        color: #333;
+                    }
+                    h1 {
+                        color: #2c3e50;
+                        text-align: center;
+                    }
+                    p {
+                        color: #555;
+                        font-size: 18px;
+                    }
+                &lt;/style&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+                &lt;h1&gt;Selamat Datang di CSS&lt;/h1&gt;
+                &lt;p&gt;Ini adalah contoh halaman web dengan CSS terintegrasi.&lt;/p&gt;
+            &lt;/body&gt;
+            &lt;/html&gt;</code>
+                        </div>
+                    </div>
+                </section>
+            
+                <section id="kesimpulan-css">
+                    <h2>Kesimpulan</h2>
+                    <p>CSS memungkinkan Anda untuk mendesain halaman web secara visual. Anda dapat menggunakan berbagai properti CSS untuk mengubah penampilan elemen HTML. Selalu coba eksperimen dengan CSS untuk memahami berbagai cara mengontrol tampilan halaman web.</p>
+                </section>
+            </article>
+        </div>
+
+        <div id="js" class="tutorial-section">
+            <h1>JavaScript Basics</h1>
+            <article>
+                <section id="intro-js">
+                    <h1>Pengantar JavaScript</h1>
+                    <p>JavaScript adalah bahasa pemrograman yang digunakan untuk membuat halaman web interaktif. Dengan JavaScript, Anda dapat menambahkan elemen dinamis seperti animasi, validasi form, dan interaksi pengguna.</p>
+                    <p>JavaScript berjalan di sisi klien (di browser) dan memungkinkan perubahan pada konten dan tampilan halaman web tanpa perlu memuat ulang halaman.</p>
+                </section>
+            
+                <section id="elemen-dasar-js">
+                    <h2>Elemen Dasar JavaScript</h2>
+                    <ul>
+                        <li><strong>Variabel:</strong> Digunakan untuk menyimpan data. Contoh: <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>let</code>
+                            </div>
+                        </div>, <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>const</code>
+                            </div>
+                        </div>, <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>var</code>
+                            </div>
+                        </div>.</li>
+                        <li><strong>Fungsi:</strong> Sekumpulan kode yang dapat dipanggil dan digunakan kembali. Contoh: <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>function</code>
+                            </div>
+                        </div>.</li>
+                        <li><strong>Event:</strong> Aksi yang dilakukan oleh pengguna atau sistem. Contoh: klik tombol, hover mouse.</li>
+                        <li><strong>DOM (Document Object Model):</strong> API untuk mengakses dan memanipulasi elemen HTML di halaman.</li>
+                    </ul>
+                </section>
+            
+                <section id="contoh-struktur-js">
+                    <h2>Contoh Struktur JavaScript</h2>
+                    <p>Berikut adalah contoh menambahkan JavaScript ke dalam halaman HTML:</p>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span></span>
+                            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                        </div>
+                        <div class="code-content">
+                            <code>&lt;script&gt;
+                function greetUser() {
+                    alert('Selamat datang di website!');
+                }
+            &lt;/script&gt;</code>
+                        </div>
+                    </div>
+                </section>
+            
+                <section id="penulisan-js">
+                    <h2>Penulisan JavaScript</h2>
+                    <ul>
+                        <li><strong>Inline:</strong> Menulis JavaScript langsung di atribut elemen HTML menggunakan <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>onclick</code>
+                            </div>
+                        </div>, <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>onmouseover</code>
+                            </div>
+                        </div>, dll. Contoh: <div class="code-container">
+                            <code>&lt;button onclick="alert('Hello!')"&gt;Klik Saya&lt;/button&gt;</code>
+                            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                        </div>.</li>
+                        <li><strong>Internal:</strong> Menulis JavaScript di dalam tag <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>&lt;script&gt;</code>
+                            </div>
+                        </div> di dalam <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>&lt;head&gt;</code>
+                            </div>
+                        </div> atau <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>&lt;body&gt;</code>
+                            </div>
+                        </div>.</li>
+                        <li><strong>Eksternal:</strong> Menulis JavaScript di dalam file terpisah dengan ekstensi <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>.js</code>
+                            </div>
+                        </div> dan menghubungkannya dengan tag <div class="code-container">
+                            <div class="code-header">
+                                <span></span>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-content">
+                                <code>&lt;script src="script.js"&gt;</code>
+                            </div>
+                        </div>.</li>
+                    </ul>
+                </section>
+            
+                <section id="contoh-javascript">
+                    <h2>Contoh Halaman HTML dengan JavaScript</h2>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span></span>
+                            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                        </div>
+                        <div class="code-content">
+                            <code>&lt;!DOCTYPE html&gt;
+            &lt;html&gt;
+            &lt;head&gt;
+                &lt;title&gt;Halaman JavaScript&lt;/title&gt;
+                &lt;script&gt;
+                    function changeColor() {
+                        document.body.style.backgroundColor = "lightblue";
+                    }
+                &lt;/script&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+                &lt;h1&gt;Selamat Datang di JavaScript&lt;/h1&gt;
+                &lt;button onclick="changeColor()"&gt;Klik untuk Mengubah Warna Latar&lt;/button&gt;
+            &lt;/body&gt;
+            &lt;/html&gt;</code>
+                        </div>
+                    </div>
+                </section>
+            
+                <section id="kesimpulan-js">
+                    <h2>Kesimpulan</h2>
+                    <p>JavaScript adalah bahasa yang kuat untuk membuat halaman web interaktif. Dengan JavaScript, Anda dapat menambahkan fungsionalitas dinamis seperti form validation, manipulasi DOM, dan banyak lagi.</p>
+                </section>
+            </article>
+        </div>
+
+        <div id="vpn" class="tutorial-section">
+            <h1>VPN Essentials</h1>
+            <article>
+                <section id="pengenalan">
+                    <h1 class="h1-pengenalan">Pengenalan VPN</h1>
+                    <div class="vpn-image-container">
+                        <img src="video/vpn-animation-cyberpunk.svg" alt="Ilustrasi VPN" class="vpn-image">
+                    </div>
+                    <p>Apa itu VPN (Virtual Private Network) ?</p>
+                    <div class="code-container">
+                        <code>VPN (Virtual Private Network) adalah sebuah jaringan komputer dimana koneksi antar perangkatnya (node) secara aman / terenkripsi dengan memanfaatkan jaringan public (Internet / WAN) di masing-masing site.</code>
+                        <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                    </div>
+                    <p>Contoh implementasinya adalah ketika kalian menjadi seorang Network Engineering yang sedang mengelola network yang terdiri dari beberapa kantor di lokasi yang berbeda. Tentu kantor - kantor itu harus saling terhubung, dan kalian sebagai Administrator jaringan harus mencari cara agar kantor - kantor ini bisa saling terhubung dengan biaya dan cara yang cepat dan efisien. Maka jika kalian kemudian membangun link atau jalur antar kantor dengan wireless atau fiber optic tentu ini akan membutuhkan banyak biaya, terlebih lagi jika kantor tersebut berada di kota atau bahkan pulau yang berbeda.</p>
+                    <p>Nah dengan fitur VPN inilah kita bisa membangunn sebuah link / jalur antar kantor dengan memanfaatkan internet antar site (antar kantor). Dan tentu link atau jalur yang sudah dibangun dengan VPN harus diamankan dengan enskripsi sehingga meminimalisir kemungkinan data akan diakses oleh orang yang tidak bertanggung jawab.</p>
+                    <p>Diatas adalah contoh kecil yang digunakan. Kita bisa melihat bahwa kantor Mataram dan kantor Sumbawa dapat saling terhubung lewat VPN (tipe IPSec). Tentu nanti kita akan belajar tentang tipe - tipe didalam VPN.</p>
+                    <p>Jika kalian perhatikan, sesungguhnya kantor tersebut bisa saja saling terhubung lewat ISP atau Internet. Tentu jelas ini mungkin saja tidak aman dan bisa saja data - data yang kita kirimkan ke antar kantor di lihat atau bahkan di ambil oleh pihak yang tidak bertanggung jawab seperti Hacker. Maka dari itu kita menggunakan VPN agar koneksi antar kantor tersebut aman dan terenskripsi.</p>
+                </section>
+
+                <section id="cara-kerja">
+                    <h2>Cara Kerja VPN dan Fungsinya</h2>
+                    <div class="vpn-image-container">
+                        <img src="img/vpn/kerja pada kantoran.jpg" alt="Ilustrasi VPN" class="vpn-image">
+                    </div>
+                    <div class="code-container">
+                        <code>Untuk lebih mendalami tentang VPN ini, kita harus tau cara kerja VPN secara garis besar. Pada dasarnya VPN bekerja dengan cara seolah-olah membuat jaringan didalam jaringan atau biasa disebut tunnel (terowongan). Tunneling ini digunakan untuk membuat jalur private dengan menggunakan infrastruktur pihak ketiga. VPN sendiri memakai teknologi tunneling antara lain adalah L2TP, PPTP, IPSec (Internet Protocol Security), dan masih banyak lagi. Dengan kombinasi tunneling dan enskripsi inilah maka terbentuk VPN.</code>
+                        <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                    </div>
+                    <p>Cara kerja VPN sederhananya adalah melakukan enkripsi pertukaran data bahkan sebelum koneksi publik di tempat kopi atau warung internet membacanya. Ketika terhubung dengan internet menggunakan koneksi VPN itu seperti mengakses internet menggunakan lorong khusus, tidak menggunakan jaringan utama.</p>
+                    <p>Tentu fungsi VPN ini sangat banyak, namun tetap dimana ada kelebihan tentu ada kelemahannya juga. Ingat bro, ngga ada yang sempurna. Beberapa fungsinya adalah :</p>
+                    <ul>
+                        <li>Pengamanan Data di Jaringan Publik</li>
+                        <li>Mengamankan Informasi Pribadi Secara Anonim</li>
+                        <li>Terenskripsinya Data</li>
+                        <li>Mengurangi Biaya Infrastruktur Jaringan antar Site</li>
+                    </ul>
+                </section>
+
+                <section id="tipe-vpn">
+                    <h2>Tipe - tipe VPN</h2>
+                    <div class="code-container">
+                        <code>Jika kita belajar banyak device vendor jaringan, tentu kita akan menemukan tipe VPN yang sangat banyak dan bervariasi. Pada dasarnya hampir semua jenis VPN itu sama disemua vendor, namun mungkin cara konfigurasinya yang berbeda - beda. Sebagai contoh PPTP di Mikrotik sama dengan PPTP Cisco, namun beberapa konfigurasi nya saja mungkin yang berbeda.</code>
+                        <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                    </div>
+                    <p>Sekarang saya pribadi akan fokus pada fitur - fitur VPN yang ada di Mikrotik. Mikrotik sudah men-support beberapa metode VPN seperti PPTP, L2TP, SSTP, OpenVPN, EoIP, dan IPIP (IP-in-IP). Dengan adanya beberapa opsi ini, kita perlu memilih tipe VPN yang cocok untuk jaringan kita. Secara umum semua tipe tersebut memiliki fungsi yang sama. Yang membedakannya adalah pada cara autentikasi dan enskripsi yang digunakan.</p>
+                    <ol>
+                        <li><strong>Ethernet over IP (EoIP)</strong>
+                            <div class="code-container">
+                                <code>Merupakan protocol pada Mikrotik RouterOS yang berfungsi untuk membangun sebuah Network Tunnel antar MikroTik router di atas sebuah koneksi TCP/IP. EoIP merupakan protokol proprietary MikroTik (support juga di linux tetapi harus di-compile manual). Maka untuk menggunakan fitur ini, router di kantor A dan kantor B harus sama - sama menggunakan router MikroTik.</code>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <p>Keuntungan dari EoIP (Ethernet over IP) memudahkan komunikasi jarak jauh layaknya satu jaringan tanpa perlu menggunakan pengeluaran banyak, lebih efisien dan hemat biaya. Dan kekurangan dari EoIP ini adalah masih rentan dalam keamanannya. Network kita bisa saja dapat terbaca karena jika melewati router yg berbeda, maka secara otomatis akan terbaca dengan jaringan tetangganya.</p>
+                        </li>
+                        <li><strong>IP - in - IP (IPIP)</strong>
+                            <div class="code-container">
+                                <code>IPIP adalah salah satu alternatif selain menggunakan EoIP. Protokol IPIP berkerja dengan mengenkapsulasi paket data dari satu IP ke IP lain untuk membentuk network tunnel. Berbeda dengan EoIP yang hanya bisa digunakan untuk router yang sama - sama MikroTik, IPIP dapat berjalan hampir di semua jenis router selama router tersebut mendukung protokol IPIP. Akan tetapi, IPIP tidak dapat di-bridge sehingga jaringan lokal dibahwa router Kantor A dan Kantor B harus menggunakan segmen IP address yang berbeda.</code>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <p>Karena jenis ini tidak dapat di-bridge, maka akan menyebabkan kesulitan jika Kantor A atau Kantor B sudah terkonfigurasi network - networknya.</p>
+                        </li>
+                        <li><strong>Point to Point Tunnel Protocol (PPTP)</strong>
+                            <div class="code-container">
+                                <code>PPTP merupakan salah satu type VPN yang paling sederhana dalam konfigurasi. Selain itu juga fleksibel. Mayoritas operating system sudah support sebagai PPTP Client, baik operating system pada PC ataupun gadget seperti android. Komunikasi PPTP menggunakan protokol TCP port 1723.</code>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <p>Pada setting PPTP, kita bisa menentukan Network Security Protocol yang digunakan untuk proses autentikasi PPTP pada Mikrotik seperti pap, chap, mschap dan mschap2. Kemudian setelah tunnel terbentuk, data yang ditransmisikan akan dienkripsi menggunakan Microsoft Point-to-Point Encryption (MPPE). Proses enskripsi biasanya akan membuat ukuran header paket yang ditransmisikan akan bertambah. Sehingga mungkin jika kita monitoring, traffick yang melewati tunnel PPTP akan mengalami overhead ± 7%.</p>
+                            <p>PPTP ideal untuk penggunaan pribadi dan bisnis sebab mereka tidak perlu membelinya dan pemasangan perangkat keras ekstra dan fasilitasnya secara khusus dijajakan sebagai perangkat lunak tambahan yang tidak mahal. Namun sayang PPTP menyediakan enskripsi yang tidak secanggih L2TP dan kawan - kawannya.</p>
+                        </li>
+                        <li><strong>Layer 2 Tunnel Protocol (L2TP)</strong>
+                            <div class="code-container">
+                                <code>L2TP merupakan pengembangan dari PPTP. Network Security Protocol dan enkripsi yang digunakan untuk autentikasi sama dengan PPTP. Akan tetapi untuk melakukan komunikasi, L2TP menggunakan UDP port 1701.</code>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <p>Namun untuk mendapatkan keamanan yang lebih baik, biasanya L2TP dikombinasikan dengan IPSec (Internet Protocol Security), sehingga sering disebut L2TP/IPSec atau IPSec. Contohnya untuk Operating system Windows, secara default OS Windows menggunakan L2TP/IPSec. Akan tetapi, konsekuensinya tentu saja konfigurasi yang harus dilakukan tidak se-simple PPTP. Sisi client pun harus sudah support IPSec ketika menerapkan L2TP/IPSec. Jika kita monitoring traffick yang melewati tunnel L2TP ini akan mengalami overhead ± 12%.</p>
+                            <p>Dari segi enkripsi, tentu enkripsi pada L2TP/IPSec memiliki tingkat sekuritas lebih tinggi, karena menggunakan enskripsi IPSec daripada PPTP yg menggunakan MPPE.</p>
+                        </li>
+                        <li><strong>Secure Socket Tunneling Protocol (SSTP)</strong>
+                            <div class="code-container">
+                                <code>Untuk membangun VPN dengan metode SSTP diperlukan sertifikat SSL di masing-masing perangkat, kecuali keduanya menggunakan RouterOS.</code>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <p>Komunikasi SSTP menggunakan TCP port 443 (SSL), sama hal nya seperti website yang secure (https). Anda harus memastikan clock sudah sesuai dengan waktu real jika menggunakan certificate. Manyamakan waktu router dengan real time bisa dengan fitur NTP Client. Sayangnya belum semua OS Support VPN dengan metode SSTP. Jika kita monitoring traffick yang melewati tunnel L2TP ini akan mengalami overhead ± 12%.</p>
+                        </li>
+                        <li><strong>OpenVPN</strong>
+                            <div class="code-container">
+                                <code>VPN ini Biasa digunakan ketika dibutuhkan keamanan data yg tinggi. Secara default, OpenVPN menggunakan UDP port 1194.</code>
+                                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <p>Dibutuhkan certificate pada masing-masing perangkat untuk bisa terkoneksi. Untuk client compatibility, OpenVPN bisa dibangun hampir pada semua Operating System dengan bantuan aplikasi pihak ketiga. OpenVPN menggunakan algoritma sha1 dan md5 untuk proses autentikasi, dan menggunakan beberapa chiper yaitu blowfish128, aes128, aes192 dan aes256. Tentu dalam segi keamanan OpenVPN memiliki keamanan yang lebih bagus.</p>
+                        </li>
+                    </ol>
+                </section>
+
+                <section id="kesimpulan">
+                    <h2>Kesimpulan</h2>
+                    <div class="code-container">
+                        <code>Perlu diingat, bahwa semakin kita membutuhkan sebuah jaringan yg aman, maka akan semakin kompleks konfigurasi yang perlu diterapkan, begitu juga dengan penggunaan resource hardware, semakin tinggi enkripsi yang digunakan, penggunaan resource, khususnya CPU juga akan naik.</code>
+                        <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                    </div>
+                    <p>Kesimpulan yang bisa kita ambil, jika Anda menginginkan VPN dg kompatibilitas perangkat client yg baik, maka PPTP bisa menjadi pilihan. Selain itu, PPTP juga bisa menjadi pilihan jika Anda tidak ingin terlalu repot untuk melakukan konfigurasi. Tetapi jika Anda menginginkan sebuah VPN dengan keamanan lebih bagus, gunakan L2TP/IPsec atau OpenVPN. Biasanya untuk OS windows, secara default menggunakan L2TP/IPSec, sehingga tinggal diseusuaikan pada sisi server. Jika memang perangkat Anda support dan Anda membutuhkan keamanan yg tinggi pada jalur VPN anda, L2TP/IPSec bisa menjadi pilihan. Satu hal yang menjadi catatan, penggunaan VPN tidak bisa meningkatkan bandwidth (lebih tepatnya mengurangi bandwidth anda karena ada penambahan headernya), tergantung dari besar bandwidth langganan anda.</p>
+                </section>
+            </article>
         </div>
     </main>
 
@@ -151,20 +1093,35 @@
     <script>
         // Fungsi untuk menampilkan section yang sesuai
         function showSection(sectionId) {
+            // Sembunyikan semua section terlebih dahulu
             const sections = document.querySelectorAll('.tutorial-section');
             sections.forEach(section => {
-                section.style.display = 'none'; // Sembunyikan semua section
+                section.style.display = 'none';
             });
-            document.getElementById(sectionId).style.display = 'block'; // Tampilkan section yang dipilih
+
+            // Tampilkan section yang dipilih
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.style.display = 'block';
+                // Scroll ke bagian atas section
+                selectedSection.scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
-        // Ambil hash dari URL dan tampilkan section yang sesuai
-        const hash = window.location.hash.substring(1);
-        if (hash) {
-            showSection(hash);
-        } else {
-            showSection('nmap'); // Tampilkan section default jika tidak ada hash
-        }
+        // Event listener untuk perubahan hash URL
+        window.addEventListener('hashchange', function() {
+            const hash = window.location.hash.substring(1);
+            showSection(hash || 'nmap'); // Default to nmap if no hash
+        });
+
+        // Tampilkan section berdasarkan hash saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            const hash = window.location.hash.substring(1);
+            showSection(hash || 'nmap'); // Default to nmap if no hash
+        });
     </script>
+    <script src="js/tutorial.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
 </body>
 </html>

@@ -68,34 +68,58 @@ main {
 }
 
 .tutorial-section {
-    background-color: #fff; /* Warna latar belakang section tutorial */
+    background-color: #fff;
     padding: 2rem;
     margin-bottom: 2rem;
-    border-radius: 10px; /* Sudut membulat */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Bayangan untuk efek kedalaman */
-    transition: transform 0.3s ease; /* Transisi saat hover */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
 .tutorial-section:hover {
-    transform: translateY(-5px); /* Efek angkat saat hover */
+    transform: translateY(-5px);
 }
 
 .tutorial-section h1 {
-    color: #1e1e1e; /* Warna judul */
-    margin-bottom: 1rem; /* Jarak bawah judul */
-    font-size: 2rem; /* Ukuran font judul */
+    color: #1e1e1e;
+    margin-bottom: 1rem;
+    font-size: 2rem;
 }
 
 .tutorial-section p {
-    margin-bottom: 1rem; /* Jarak bawah paragraf */
+    margin-bottom: 1rem;
 }
 
-code {
-    background-color: #2c2c2c;
+.code-block {
+    position: relative;
+    margin-bottom: 20px;
+}
+.copy-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #007bff;
     color: white;
-    padding: 0.2em 0.4em;
-    border-radius: 3px;
-    font-family: monospace;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s ease-in-out;
+}
+.copy-btn:hover {
+    opacity: 1;
+}
+pre {
+    padding: 10px;
+    background: #2d2d2d;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+code {
+    color: #f8f8f2;
+    font-family: "Courier New", Courier, monospace;
 }
 
 footer {
@@ -164,3 +188,54 @@ footer {
 .image-container:hover img {
     transform: scale(1.1); /* Efek zoom saat hover */
 }
+
+/* Gaya untuk kontainer kode */
+.code-container {
+    background-color: #282c34; /* Warna latar belakang gelap */
+    border-radius: 8px; /* Sudut membulat */
+    padding: 16px; /* Ruang di dalam kontainer */
+    margin: 1rem 0; /* Jarak atas dan bawah */
+    overflow-x: auto; /* Mengizinkan scroll horizontal jika diperlukan */
+}
+
+/* Gaya untuk header kontainer kode */
+.code-header {
+    background-color: #3c4043; /* Warna latar belakang header */
+    color: #ffffff; /* Warna teks putih */
+    padding: 8px 16px; /* Ruang di dalam header */
+    display: flex; /* Menggunakan flexbox untuk tata letak */
+    justify-content: space-between; /* Jarak antara elemen */
+    align-items: center; /* Vertikal center */
+}
+
+/* Gaya untuk konten kode */
+.code-content {
+    padding: 16px; /* Ruang di dalam konten */
+    color: #f8f8f2; /* Warna teks untuk kode */
+    font-family: 'Courier New', Courier, monospace; /* Font monospace */
+    font-size: 14px; /* Ukuran font */
+}
+
+/* Gaya untuk tag <code> */
+code {
+    background-color: #44475a; /* Warna latar belakang untuk tag <code> */
+    padding: 2px 4px; /* Ruang di dalam tag <code> */
+    border-radius: 4px; /* Sudut membulat */
+    color: #f8f8f2; /* Warna teks */
+}
+
+/* Gaya untuk tombol salin */
+.copy-button {
+    background-color: #50fa7b; /* Warna hijau untuk tombol */
+    color: #282c34; /* Warna teks gelap */
+    border: none; /* Tanpa border */
+    border-radius: 4px; /* Sudut membulat */
+    padding: 4px 8px; /* Ruang di dalam tombol */
+    cursor: pointer; /* Pointer saat hover */
+    transition: background-color 0.3s; /* Transisi halus */
+}
+
+.copy-button:hover {
+    background-color: #4af626; /* Warna saat hover */
+}
+
