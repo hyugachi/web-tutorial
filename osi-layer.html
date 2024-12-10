@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial OSI Layer</title>
+    <link rel="stylesheet" href="css/osi-layer.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Memahami OSI Layer</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#tutorial">Tutorial</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <article>
+            <section id="pengenalan">
+                <h1 class="h1-pengenalan">Pengenalan OSI Layer</h1>
+                <div class="gif-container">
+                    <img src="video/osi-layer.gif" alt="Animasi OSI Layer" class="osi-layer-gif">
+                </div>
+                <p>Model OSI (Open Systems Interconnection) adalah kerangka konseptual yang membagi proses komunikasi jaringan menjadi tujuh lapisan berbeda. Dikembangkan oleh ISO pada tahun 1984, model ini menyediakan standar untuk memahami aliran data dalam jaringan komputer, serta memecahkan masalah jaringan secara lebih efisien.</p>
+            </section>
+            
+            <section id="lapisan-osi">
+                <h2>7 Lapisan OSI dan Fungsinya</h2>
+                <ol>
+                    <li><strong>Application Layer</strong>
+                        <p>Lapisan teratas yang berinteraksi langsung dengan pengguna. Menyediakan antarmuka untuk aplikasi seperti email, browser, dan FTP.</p>
+                        <code>Protokol: HTTP, FTP, SMTP, DNS</code>
+                        <p><strong>Contoh:</strong> Membuka browser web atau aplikasi email.</p>
+                    </li>
+                    <li><strong>Presentation Layer</strong>
+                        <p>Bertanggung jawab untuk format dan enkripsi data. Menangani kompresi dan dekompresi data, serta mengkonversi data ke format yang sesuai.</p>
+                        <code>Contoh: JPEG, GIF, SSL/TLS</code>
+                    </li>
+                    <li><strong>Session Layer</strong>
+                        <p>Mengelola sesi komunikasi antar aplikasi, seperti pembentukan, pemeliharaan, dan pemutusan sesi.</p>
+                        <code>Contoh: NetBIOS, RPC</code>
+                    </li>
+                    <li><strong>Transport Layer</strong>
+                        <p>Memastikan pengiriman data end-to-end yang andal, menangani segmentasi data, dan kontrol aliran.</p>
+                        <code>Protokol: TCP, UDP</code>
+                        <p><strong>Contoh:</strong> Memastikan file yang dikirim sampai dengan utuh.</p>
+                    </li>
+                    <li><strong>Network Layer</strong>
+                        <p>Menangani routing dan pengalamatan logis, serta menentukan jalur terbaik untuk pengiriman data.</p>
+                        <code>Protokol: IP (IPv4, IPv6)</code>
+                        <p><strong>Contoh:</strong> Router beroperasi di lapisan ini.</p>
+                    </li>
+                    <li><strong>Data Link Layer</strong>
+                        <p>Mengelola komunikasi point-to-point, mendeteksi dan memperbaiki kesalahan pada lapisan fisik, serta mengatur akses ke media transmisi.</p>
+                        <p><strong>Contoh:</strong> Switch dan Bridge bekerja di lapisan ini.</p>
+                    </li>
+                    <li><strong>Physical Layer</strong>
+                        <p>Menangani transmisi bit mentah melalui media fisik, seperti sinyal listrik atau optik. Mendefinisikan karakteristik fisik jaringan, termasuk kabel, hub, dan repeater.</p>
+                        <p><strong>Contoh:</strong> Kabel dan Hub.</p>
+                    </li>
+                </ol>
+            </section>
+            
+            <section id="cara-kerja">
+                <h2>Cara Kerja OSI Layer</h2>
+                <p>Proses komunikasi di OSI Layer melibatkan dua langkah utama: <strong>Enkapsulasi</strong> dan <strong>De-enkapsulasi</strong>.</p>
+                
+                <ul>
+                    <li><strong>Proses Enkapsulasi:</strong> Data bergerak dari Application Layer ke Physical Layer. Setiap lapisan menambahkan informasi header-nya sendiri, sehingga data terbungkus di setiap lapisan.</li>
+                    <li><strong>Proses De-enkapsulasi:</strong> Data diterima dari Physical Layer dan dibuka di setiap lapisan hingga mencapai Application Layer, kembali ke bentuk aslinya.</li>
+                </ul>
+            </section>
+            
+            <section id="manfaat">
+                <h2>Manfaat Model OSI</h2>
+                <ul>
+                    <li><strong>Standardisasi:</strong> Menyediakan standar universal untuk komunikasi jaringan yang memungkinkan perangkat berbeda untuk berkomunikasi.</li>
+                    <li><strong>Modularitas:</strong> Memecah fungsi kompleks menjadi bagian yang lebih sederhana untuk memudahkan pengembangan dan pemecahan masalah.</li>
+                    <li><strong>Interoperabilitas:</strong> Memungkinkan perangkat dari vendor yang berbeda untuk bekerja sama dalam jaringan yang sama.</li>
+                </ul>
+            </section>
+        </article>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Blog Jaringan. Hak Cipta Dilindungi.</p>
+    </footer>
+</body>
+</html>

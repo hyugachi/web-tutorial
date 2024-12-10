@@ -1,0 +1,270 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+    <defs>
+        <!-- Enhanced Gradients -->
+        <linearGradient id="cyberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#00ff88">
+                <animate attributeName="stop-color"
+                         values="#00ff88;#00ccff;#00ff88"
+                         dur="3s"
+                         repeatCount="indefinite"/>
+            </stop>
+            <stop offset="100%" style="stop-color:#00ccff">
+                <animate attributeName="stop-color"
+                         values="#00ccff;#0088ff;#00ccff"
+                         dur="3s"
+                         repeatCount="indefinite"/>
+            </stop>
+        </linearGradient>
+
+        <!-- Cyber Pattern -->
+        <pattern id="hexPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+            <path d="M10 0 L20 5 L20 15 L10 20 L0 15 L0 5 Z" 
+                  fill="none" 
+                  stroke="#004422" 
+                  stroke-width="0.5">
+                <animate attributeName="stroke-opacity"
+                         values="0.2;0.4;0.2"
+                         dur="3s"
+                         repeatCount="indefinite"/>
+            </path>
+        </pattern>
+
+        <!-- Enhanced Glow Effects -->
+        <filter id="cyberGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="2" result="blur1"/>
+            <feGaussianBlur stdDeviation="4" result="blur2"/>
+            <feMerge>
+                <feMergeNode in="blur1"/>
+                <feMergeNode in="blur2"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+
+        <!-- Data Stream Effect -->
+        <filter id="dataStream">
+            <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="3" result="noise"/>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="5"/>
+        </filter>
+    </defs>
+
+    <!-- Animated Cyber Background -->
+    <rect width="400" height="300" fill="#001122">
+        <animate attributeName="fill"
+                 values="#001122;#000814;#001122"
+                 dur="5s"
+                 repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Hex Pattern Background -->
+    <rect width="400" height="300" fill="url(#hexPattern)">
+        <animateTransform attributeName="transform"
+                         type="rotate"
+                         from="0 200 150"
+                         to="360 200 150"
+                         dur="60s"
+                         repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Cyber Grid -->
+    <g stroke="#00ff88" stroke-width="0.5" opacity="0.3">
+        <g id="cyberGrid">
+            <animate attributeName="opacity"
+                     values="0.3;0.5;0.3"
+                     dur="4s"
+                     repeatCount="indefinite"/>
+            <!-- Dynamic Grid Lines -->
+            <path d="M0,0 L400,300" stroke-dasharray="5,5">
+                <animate attributeName="stroke-dashoffset"
+                         from="0"
+                         to="10"
+                         dur="1s"
+                         repeatCount="indefinite"/>
+            </path>
+            <path d="M400,0 L0,300" stroke-dasharray="5,5">
+                <animate attributeName="stroke-dashoffset"
+                         from="10"
+                         to="0"
+                         dur="1s"
+                         repeatCount="indefinite"/>
+            </path>
+        </g>
+    </g>
+
+    <!-- User Device - Holographic Display -->
+    <g transform="translate(30,130)" filter="url(#cyberGlow)">
+        <rect width="60" height="50" rx="8" fill="#001133" stroke="url(#cyberGrad)" stroke-width="2"/>
+        <!-- Holographic Screen -->
+        <g transform="translate(10,10)">
+            <rect width="40" height="30" fill="#00225588"/>
+            <line x1="5" y1="8" x2="35" y2="8" stroke="#00ff88" stroke-width="1">
+                <animate attributeName="x2"
+                         values="35;25;35"
+                         dur="2s"
+                         repeatCount="indefinite"/>
+            </line>
+            <line x1="5" y1="15" x2="30" y2="15" stroke="#00ff88" stroke-width="1">
+                <animate attributeName="x2"
+                         values="30;35;30"
+                         dur="1.5s"
+                         repeatCount="indefinite"/>
+            </line>
+            <line x1="5" y1="22" x2="25" y2="22" stroke="#00ff88" stroke-width="1">
+                <animate attributeName="x2"
+                         values="25;30;25"
+                         dur="1s"
+                         repeatCount="indefinite"/>
+            </line>
+        </g>
+        <text x="30" y="70" fill="#00ff88" text-anchor="middle" font-size="10">CLIENT</text>
+    </g>
+
+    <!-- Server - Cyber Tower -->
+    <g transform="translate(310,130)" filter="url(#cyberGlow)">
+        <path d="M0,0 L60,0 L50,50 L10,50 Z" fill="#001133" stroke="url(#cyberGrad)" stroke-width="2"/>
+        <!-- Server Lights -->
+        <g>
+            <circle cx="15" cy="15" r="3" fill="#00ff88">
+                <animate attributeName="fill-opacity"
+                         values="1;0.5;1"
+                         dur="0.5s"
+                         repeatCount="indefinite"/>
+            </circle>
+            <circle cx="30" cy="15" r="3" fill="#00ccff">
+                <animate attributeName="fill-opacity"
+                         values="0.5;1;0.5"
+                         dur="0.7s"
+                         repeatCount="indefinite"/>
+            </circle>
+            <circle cx="45" cy="15" r="3" fill="#00ff88">
+                <animate attributeName="fill-opacity"
+                         values="1;0.5;1"
+                         dur="0.3s"
+                         repeatCount="indefinite"/>
+            </circle>
+        </g>
+        <text x="30" y="70" fill="#00ff88" text-anchor="middle" font-size="10">SERVER</text>
+    </g>
+
+    <!-- Enhanced VPN Tunnel -->
+    <g filter="url(#cyberGlow)">
+        <!-- Multiple Layer Tunnel -->
+        <path d="M90,150 C160,100 240,200 310,150" 
+              fill="none" 
+              stroke="url(#cyberGrad)" 
+              stroke-width="25" 
+              stroke-linecap="round"
+              opacity="0.3">
+            <animate attributeName="d"
+                     values="M90,150 C160,100 240,200 310,150;
+                             M90,150 C160,200 240,100 310,150;
+                             M90,150 C160,100 240,200 310,150"
+                     dur="5s"
+                     repeatCount="indefinite"/>
+        </path>
+        <path d="M90,150 C160,100 240,200 310,150" 
+              fill="none" 
+              stroke="#00ff88" 
+              stroke-width="2" 
+              stroke-linecap="round"
+              stroke-dasharray="5,5">
+            <animate attributeName="stroke-dashoffset"
+                     from="0"
+                     to="20"
+                     dur="1s"
+                     repeatCount="indefinite"/>
+        </path>
+    </g>
+
+    <!-- Enhanced Data Packets -->
+    <g filter="url(#cyberGlow)">
+        <!-- Encrypted Data Packets -->
+        <g>
+            <circle r="4" fill="#00ff88">
+                <animateMotion path="M90,150 C160,100 240,200 310,150"
+                              dur="2s"
+                              repeatCount="indefinite"/>
+                <animate attributeName="r"
+                         values="4;6;4"
+                         dur="0.5s"
+                         repeatCount="indefinite"/>
+            </circle>
+            <circle r="3" fill="#00ccff">
+                <animateMotion path="M90,150 C160,100 240,200 310,150"
+                              dur="2s"
+                              begin="0.5s"
+                              repeatCount="indefinite"/>
+            </circle>
+            <circle r="5" fill="#00ff88">
+                <animateMotion path="M90,150 C160,100 240,200 310,150"
+                              dur="2s"
+                              begin="1s"
+                              repeatCount="indefinite"/>
+            </circle>
+        </g>
+    </g>
+
+    <!-- Cyber Shield -->
+    <g transform="translate(180,120) scale(0.3)" filter="url(#cyberGlow)">
+        <path d="M100,10 L180,45 L180,95 C180,150 100,190 100,190 C100,190 20,150 20,95 L20,45 Z" 
+              fill="none"
+              stroke="url(#cyberGrad)"
+              stroke-width="5">
+            <animate attributeName="stroke-dasharray"
+                     values="0,1000;1000,0"
+                     dur="3s"
+                     repeatCount="indefinite"/>
+        </path>
+        <!-- Digital Lock -->
+        <g transform="translate(0,20)">
+            <path d="M85,80 h30 v-20 a15,15 0 0,0 -30,0 v20" 
+                  fill="none"
+                  stroke="#00ff88"
+                  stroke-width="4">
+                <animate attributeName="stroke-opacity"
+                         values="1;0.5;1"
+                         dur="1s"
+                         repeatCount="indefinite"/>
+            </path>
+        </g>
+    </g>
+
+    <!-- Connection Status and Matrix Rain -->
+    <g transform="translate(200,250)" filter="url(#cyberGlow)">
+        <text text-anchor="middle" 
+              fill="#00ff88" 
+              font-size="14" 
+              font-family="monospace">
+            SECURE TRANSMISSION ACTIVE
+            <animate attributeName="fill-opacity"
+                     values="1;0.7;1"
+                     dur="1s"
+                     repeatCount="indefinite"/>
+        </text>
+    </g>
+
+    <!-- Matrix Digital Rain -->
+    <g font-family="monospace" font-size="10" fill="#00ff88" opacity="0.5">
+        <text x="50" y="50">01001</text>
+        <text x="150" y="80">10110</text>
+        <text x="250" y="60">11001</text>
+        <text x="350" y="70">01011</text>
+        <animateTransform
+            attributeName="transform"
+            type="translate"
+            from="0 0"
+            to="0 300"
+            dur="5s"
+            repeatCount="indefinite"/>
+    </g>
+
+    <!-- Connection Metrics -->
+    <g transform="translate(10,10)" font-family="monospace" font-size="8" fill="#00ff88">
+        <text>PING: 28ms</text>
+        <text y="12">ENCRYPTION: AES-256</text>
+        <text y="24">PROTOCOL: UDP</text>
+        <animate attributeName="opacity"
+                 values="0.7;1;0.7"
+                 dur="2s"
+                 repeatCount="indefinite"/>
+    </g>
+</svg>

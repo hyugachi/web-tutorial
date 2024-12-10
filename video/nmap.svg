@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#0a0a1a"/>
+  
+  <!-- Outer Eye Ring -->
+  <circle cx="200" cy="150" r="80" fill="none" stroke="#2196F3" stroke-width="4">
+    <animate attributeName="stroke-dasharray"
+             values="0,1000;502,0"
+             dur="3s"
+             repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Middle Eye Ring -->
+  <circle cx="200" cy="150" r="60" fill="none" stroke="#4CAF50" stroke-width="2">
+    <animate attributeName="transform"
+             attributeType="XML"
+             type="rotate"
+             from="0 200 150"
+             to="360 200 150"
+             dur="4s"
+             repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Inner Eye Circle -->
+  <circle cx="200" cy="150" r="40" fill="#1a1a3a"/>
+  
+  <!-- Pupil -->
+  <circle cx="200" cy="150" r="25" fill="#00ff00">
+    <animate attributeName="r"
+             values="25;20;25"
+             dur="2s"
+             repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Scanning Line -->
+  <line x1="120" y1="150" x2="280" y2="150" stroke="#00ff00" stroke-width="2">
+    <animate attributeName="transform"
+             attributeType="XML"
+             type="rotate"
+             from="0 200 150"
+             to="360 200 150"
+             dur="2s"
+             repeatCount="indefinite"/>
+  </line>
+  
+  <!-- Scanning Effects -->
+  <circle cx="200" cy="150" r="30" fill="none" stroke="#00ff00" stroke-width="1" opacity="0.5">
+    <animate attributeName="r"
+             values="30;80;30"
+             dur="2s"
+             repeatCount="indefinite"/>
+    <animate attributeName="opacity"
+             values="0.5;0;0.5"
+             dur="2s"
+             repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Small Data Points -->
+  <g id="dataPoints">
+    <circle cx="160" cy="110" r="2" fill="#00ff00">
+      <animate attributeName="opacity"
+               values="1;0;1"
+               dur="1s"
+               repeatCount="indefinite"/>
+    </circle>
+    <circle cx="240" cy="110" r="2" fill="#00ff00">
+      <animate attributeName="opacity"
+               values="1;0;1"
+               dur="1s"
+               begin="0.3s"
+               repeatCount="indefinite"/>
+    </circle>
+    <circle cx="200" cy="90" r="2" fill="#00ff00">
+      <animate attributeName="opacity"
+               values="1;0;1"
+               dur="1s"
+               begin="0.6s"
+               repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Status Text -->
+  <text x="200" y="250" fill="#00ff00" text-anchor="middle" font-family="monospace" font-size="12">
+    SCANNING IN PROGRESS...
+    <animate attributeName="opacity"
+             values="1;0.3;1"
+             dur="1s"
+             repeatCount="indefinite"/>
+  </text>
+  
+  <!-- Binary Data Stream -->
+  <text x="200" y="270" fill="#4CAF50" text-anchor="middle" font-family="monospace" font-size="10">
+    101010 ANALYZING 101010
+    <animate attributeName="opacity"
+             values="1;0;1"
+             dur="2s"
+             repeatCount="indefinite"/>
+  </text>
+</svg>

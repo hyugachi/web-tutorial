@@ -1,0 +1,321 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <!-- Enhanced server gradients -->
+    <linearGradient id="serverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1">
+        <animate attributeName="stop-color" values="#0f172a;#1e3a8a;#0f172a" dur="3s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="50%" style="stop-color:#1e40af;stop-opacity:1">
+        <animate attributeName="stop-color" values="#1e40af;#2563eb;#1e40af" dur="3s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1">
+        <animate attributeName="stop-color" values="#0f172a;#1e3a8a;#0f172a" dur="3s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+
+    <!-- Advanced circuit pattern -->
+    <pattern id="circuitPattern" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M0 25h50 M25 0v50 M0 0l50 50 M50 0l-50 50" stroke="#1a365d" stroke-width="0.5" fill="none"/>
+      <circle cx="25" cy="25" r="3" fill="#1a365d"/>
+      <circle cx="0" cy="0" r="2" fill="#1a365d"/>
+      <circle cx="50" cy="50" r="2" fill="#1a365d"/>
+      <animate attributeName="stroke-dashoffset" values="0;50" dur="20s" repeatCount="indefinite"/>
+    </pattern>
+
+    <!-- Enhanced glow effects -->
+    <filter id="enhancedGlow" height="300%" width="300%" x="-75%" y="-75%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feFlood flood-color="#60a5fa" flood-opacity="0.5" result="blue"/>
+      <feComposite in="blue" in2="coloredBlur" operator="in" result="softGlow"/>
+      <feMerge>
+        <feMergeNode in="softGlow"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Attack particle system -->
+    <filter id="particleGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1   0 1 0 0 0   0 0 1 0 0  0 0 0 5 -2"/>
+    </filter>
+  </defs>
+
+  <!-- Enhanced background -->
+  <rect width="800" height="600" fill="#020617"/>
+  <rect width="800" height="600" fill="url(#circuitPattern)" opacity="0.15"/>
+
+  <!-- Dynamic grid system -->
+  <g id="grid" opacity="0.3">
+    <path d="M0 50 h800 M0 150 h800 M0 250 h800 M0 350 h800 M0 450 h800 M0 550 h800" 
+          stroke="#1a365d" stroke-width="0.5" stroke-dasharray="5,5">
+      <animate attributeName="stroke-dash offset" values="0;50" dur="20s" repeatCount="indefinite"/>
+    </path>
+    <path d="M50 0 v600 M150 0 v600 M250 0 v600 M350 0 v600 M450 0 v600 M550 0 v600" 
+          stroke="#1a365d" stroke-width="0.5" stroke-dasharray="5,5">
+      <animate attributeName="stroke-dashoffset" values="0;50" dur="20s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Laptop penyerang di sebelah kiri -->
+  <g transform="translate(100,200)">
+    <!-- Base laptop -->
+    <g id="laptopBase">
+      <!-- Laptop screen -->
+      <rect x="0" y="0" width="200" height="130" 
+            fill="#1e293b" rx="5">
+        <animate attributeName="fill" 
+                 values="#1e293b;#374151;#1e293b" 
+                 dur="2s" 
+                 repeatCount="indefinite"/>
+      </rect>
+      
+      <!-- Screen content -->
+      <g transform="translate(10,10)">
+        <!-- Matrix rain effect -->
+        <text class="matrix-code" fill="#22c55e" font-family="monospace" font-size="10">
+          <tspan x="0" dy="10">01101001 01101110</tspan>
+          <tspan x="0" dy="12">11001010 10101011</tspan>
+          <tspan x="0" dy="12">01001100 01010101</tspan>
+          <tspan x="0" dy="12">10101010 11110000</tspan>
+          <animate attributeName="opacity" 
+                   values="1;0.7;1" 
+                   dur="0.5s" 
+                   repeatCount="indefinite"/>
+        </text>
+        
+        <!-- Terminal window -->
+        <rect x="100" y="10" width="80" height="100" 
+              fill="#000000" 
+              opacity="0.8"/>
+        <text x="105" y="25" 
+              fill="#ef4444" 
+              font-family="monospace" 
+              font-size="8">
+          > ATTACKING...
+          <animate attributeName="opacity" 
+                   values="1;0;1" 
+                   dur="1s" 
+                   repeatCount="indefinite"/>
+        </text>
+      </g>
+
+      <!-- Laptop keyboard -->
+      <path d="M0,130 L220,130 L200,160 L20,160 Z" 
+            fill="#0f172a">
+        <animate attributeName="fill" 
+                 values="#0f172a;#1e293b;#0f172a" 
+                 dur="3s" 
+                 repeatCount="indefinite"/>
+      </path>
+
+      <!-- Glowing effect around laptop -->
+      <rect x="-5" y="-5" width="210" height="140" 
+            stroke="#ef4444" 
+            stroke-width="1" 
+            fill="none" 
+            filter="url(#enhancedGlow)" 
+            opacity="0.5">
+        <animate attributeName="opacity" 
+                 values="0.5;0.2;0.5" 
+                 dur="1s" 
+                 repeatCount="indefinite"/>
+      </rect>
+    </g>
+
+    <!-- Hacking particles emanating from laptop -->
+    <g id="hackingParticles">
+      <!-- Particle streams -->
+      <g transform="translate(200,65)">
+        <circle r="2" fill="#ef4444">
+          <animate attributeName="opacity" 
+                   values="1;0;1" 
+                   dur="0.5s" 
+                   repeatCount="indefinite"/>
+          <animateMotion path="M0,0 Q50,-20 100,0 T200,0" 
+                        dur="2s" 
+                        repeatCount="indefinite"/>
+        </circle>
+        <circle r="2" fill="#ef4444">
+          <animate attributeName="opacity" 
+                   values="1;0;1" 
+                   dur="0.7s" 
+                   repeatCount="indefinite"/>
+          <animateMotion path="M0,0 Q50,20 100,0 T200 ,0" 
+                        dur="2.5s" 
+                        repeatCount="indefinite"/>
+        </circle>
+        <circle r="2" fill="#ef4444">
+          <animate attributeName="opacity" 
+                   values="1;0;1" 
+                   dur="0.9s" 
+                   repeatCount="indefinite"/>
+          <animateMotion path="M0 ,0 Q50,40 100,0 T200,0" 
+                        dur="3s" 
+                        repeatCount="indefinite"/>
+        </circle>
+      </g>
+    </g>
+  </g>
+
+  <!-- Enhanced Server Complex -->
+  <g transform="translate(500,100)">
+    <!-- Main server rack -->
+    <g id="serverRack">
+      <!-- Server units -->
+      <g id="serverUnits">
+        <!-- Unit 1: Main Processing -->
+        <g transform="translate(20,20)">
+          <rect width="210" height="70" fill="#1e293b" rx="5"/>
+          <rect x="10" y="10" width="190" height="50" fill="#0f172a" rx="3">
+            <animate attributeName="fill" values="#0f172a;#1e3a8a;#0f172a" dur="2s" repeatCount="indefinite"/>
+          </rect>
+          <!-- CPU cores visualization -->
+          <g transform="translate(20,15)">
+            <rect width="30" height="30" fill="#2563eb" rx="2">
+              <animate attributeName="opacity" values="1;0.5;1" dur="0.5s" repeatCount="indefinite"/>
+            </rect>
+          </g>
+          <g transform="translate(60,15)">
+            <rect width="30" height="30" fill="#2563eb" rx="2">
+              <animate attributeName="opacity" values="1;0.5;1" dur="0.7s" repeatCount="indefinite"/>
+            </rect>
+          </g>
+        </g>
+
+        <!-- Unit 2: Memory Banks -->
+        <g transform="translate(20,100)">
+          <rect width="210" height="90" fill="#1e293b" rx="5"/>
+          <g id="memoryModules">
+            <rect x="10" y="10" width="90" height="30" fill="#0f172a" rx="2"/>
+            <rect x="110" y="10" width="90" height="30" fill="#0f172a" rx="2"/>
+            <rect x="10" y="50" width="90" height="30" fill="#0f172a" rx="2"/>
+            <rect x="110" y="50" width="90" height="30" fill="#0f172a" rx="2">
+              <animate attributeName="fill" values="#0f172a;#2563eb;#0f172a" dur="1s" repeatCount="indefinite"/>
+            </rect>
+          </g>
+        </g>
+
+        <!-- Unit 3: Storage Array -->
+        <g transform="translate(20,200)">
+          <rect width="210" height="170" fill="#1e293b" rx="5"/>
+          <g id="storageArray">
+            <!-- Drive bays -->
+            <g transform="translate(10,10)">
+              <rect width="190" height="30" fill="#0f172a" rx="2"/>
+              <circle cx="15" cy="15" r="5" fill="#22c55e"/>
+            </g>
+            <g transform="translate(10,45)">
+              <rect width="190" height="30" fill="#0f172a" rx="2"/>
+              <circle cx="15" cy="15" r="5" fill="#22c55e"/>
+            </g>
+            <g transform="translate(10,80)">
+              <rect width="190" height="30" fill="#0f172a" rx="2"/>
+              <circle cx="15" cy="15" r="5" fill="#ef4444">
+                <animate attributeName="fill" values="#ef4444;#22c55e;#ef4444" dur="0.5s" repeatCount="indefinite"/>
+              </circle>
+            </g>
+            <g transform="translate(10,115)">
+              <rect width="190" height="30" fill="#0f172a" rx="2"/>
+              <circle cx="15" cy="15" r="5" fill="#22c55e"/>
+            </g>
+          </g>
+        </g>
+      </g>
+
+      <!-- Enhanced status indicators -->
+      <g transform="translate(20,380)">
+        <rect width="210" height="10" fill="#1e293b" rx="5"/>
+        <circle cx="20" cy="5" r="3" fill="#22c55e">
+          <animate attributeName="fill" values="#22c55e;#ef4444;#22c55e" dur="0.5s" repeatCount="indefinite"/>
+ </circle>
+        <circle cx="40" cy="5" r="3" fill="#eab308">
+          <animate attributeName="fill" values="#eab308;#ef4444;#eab308" dur="0.7s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="60" cy="5" r="3" fill="#22c55e"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Enhanced Attack Visualization -->
+  <g id="enhancedAttack">
+    <!-- Multiple attack vectors with particle effects -->
+    <g>
+      <!-- Attack vector 1 -->
+      <g>
+        <circle cx="0" cy="0" r="5" fill="#ef4444" filter="url(#particleGlow)">
+          <animateMotion path="M250,200 Q375,150 500,200 T750,200" dur="1s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="0" cy="0" r="3" fill="#fecaca" filter="url(#particleGlow)">
+          <animateMotion path="M250,200 Q375,150 500,200 T750,200" dur="1s" begin="0.2s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+
+      <!-- Attack vector 2 -->
+      <g>
+        <circle cx="0" cy="0" r="5" fill="#ef4444" filter="url(#particleGlow)">
+          <animateMotion path="M250,300 Q375,400 500,300 T750,300" dur="1.2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="0" cy="0" r="3" fill="#fecaca" filter="url(#particleGlow)">
+          <animateMotion path="M250,300 Q375,400 500,300 T750,300" dur="1.2s" begin="0.3s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+
+      <!-- Attack vector 3 -->
+      <g>
+        <circle cx="0" cy="0" r="5" fill="#ef4444" filter="url(#particleGlow)">
+          <animateMotion path="M250,250 Q375,275 500,250 T750,250" dur="0.8s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="0" cy="0" r="3" fill="#fecaca" filter="url(#particleGlow)">
+          <animateMotion path="M250,250 Q375,275 500,250 T750,250" dur="0.8s" begin="0.1s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+    </g>
+
+    <!-- Attack paths -->
+    <path d="M250,200 Q375,150 500,200 T750,200" 
+          stroke="#ef4444" 
+          stroke-width="2"
+          stroke-dasharray="5,5"
+          opacity="0.5">
+      <animate attributeName="stroke-dashoffset" values="0;-10" dur="0.5s" repeatCount="indefinite"/>
+    </path>
+    <path d="M250,300 Q375,400 500,300 T750,300" 
+          stroke="#ef4444" 
+          stroke-width="2"
+          stroke-dasharray="5,5"
+          opacity="0.5">
+      <animate attributeName="stroke-dashoffset" values="0;-10" dur="0.7s" repeatCount="indefinite"/>
+    </path>
+    <path d="M250,250 Q375,275 500,250 T750,250" 
+          stroke="#ef4444" 
+          stroke-width="2"
+          stroke-dasharray="5,5"
+          opacity="0.5">
+      <animate attributeName="stroke-dashoffset" values="0;-10" dur="0.3s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Server shield effect -->
+  <g transform="translate(500,100)">
+    <rect width="250" height="400" 
+          fill="none" 
+          stroke="#4f46e5" 
+          stroke-width="2"
+          filter="url(#enhancedGlow)"
+          opacity="0.3">
+      <animate attributeName="opacity" values="0.3;0.1;0.3" dur="1s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Warning system -->
+  <g transform="translate(50,450)">
+    <text font-family="monospace" font-size="14" fill ="#ef4444" filter="url(#enhancedGlow)">
+      <tspan x="0" dy="0">! CRITICAL ALERT !</tspan>
+      <tspan x="0" dy="20">Multiple attack vectors detected</tspan>
+      <tspan x="0" dy="20">Firewall: ACTIVE | CPU Load: 89%</tspan>
+      <tspan x="0" dy="20">Deploying countermeasures...</tspan>
+      <animate attributeName="opacity" values="1;0.5;1" dur="0.5s" repeatCount="indefinite"/>
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,166 @@
+/* style.css */
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    background-color: #f0f0f0; /* Warna latar belakang yang lebih cerah */
+    color: #333; /* Warna teks yang gelap */
+}
+
+header {
+    background-color: #1e1e1e; /* Warna header */
+    color: #fff;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Bayangan untuk efek kedalaman */
+}
+
+nav {
+    display: flex;
+    justify-content: center; /* Pusatkan navigasi */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #3CF; /* Warna logo */
+    margin-right: auto; /* Memindahkan logo ke kiri */
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px; /* Jarak antar item navigasi */
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px; /* Padding untuk area klik yang lebih besar */
+    border-radius: 5px; /* Sudut membulat */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transisi halus */
+}
+
+nav ul li a:hover {
+    background-color: #3CF; /* Warna latar belakang saat hover */
+    color: #fff; /* Warna teks saat hover */
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.tutorial-section {
+    background-color: #fff; /* Warna latar belakang section tutorial */
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 10px; /* Sudut membulat */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Bayangan untuk efek kedalaman */
+    transition: transform 0.3s ease; /* Transisi saat hover */
+}
+
+.tutorial-section:hover {
+    transform: translateY(-5px); /* Efek angkat saat hover */
+}
+
+.tutorial-section h1 {
+    color: #1e1e1e; /* Warna judul */
+    margin-bottom: 1rem; /* Jarak bawah judul */
+    font-size: 2rem; /* Ukuran font judul */
+}
+
+.tutorial-section p {
+    margin-bottom: 1rem; /* Jarak bawah paragraf */
+}
+
+code {
+    background-color: #2c2c2c;
+    color: white;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+footer {
+    background-color: #1e1e1e;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column; /* Navigasi vertikal pada layar kecil */
+    }
+    nav ul {
+        margin-top: 1rem;
+    }
+    nav ul li {
+        margin: 5px 0; /* Jarak antar item navigasi */
+    }
+}
+
+.vpn-image-container, .nmap-image-container, .osi-image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.vpn-image, .nmap-image, .osi-image {
+    max-width: 100%; /* Memastikan gambar tidak melebihi lebar kontainer */
+    height: auto; /* Mempertahankan rasio aspek gambar */
+}
+
+.h1-pengenalan {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Tambahan untuk tombol */
+.button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #3CF; /* Warna tombol */
+ color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #005f7f; /* Warna saat hover */
+}
+
+/* Animasi untuk gambar */
+.image-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-container img {
+    transition: transform 0.5s ease; /* Transisi halus untuk efek zoom */
+}
+
+.image-container:hover img {
+    transform: scale(1.1); /* Efek zoom saat hover */
+}
