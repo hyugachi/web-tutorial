@@ -233,16 +233,68 @@ h2 { margin-top: 0; }
 .tm-special-items {
     display: flex;
     flex-wrap: wrap;
-    margin: -30px -10px 0;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
 }
 
 .tm-special-item {
+    flex: 1;
+    min-width: 280px;
     max-width: 320px;
-    margin: 30px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
 }
 
-.tm-special-item-title { font-size: 1.4rem; }
-.tm-special-item-description { padding: 25px 30px; }
+.tm-special-item img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 20px;
+    border: 3px solid #099;
+    transition: transform 0.3s ease;
+}
+
+.tm-special-item img:hover {
+    transform: scale(1.05);
+}
+
+.tm-special-item-description {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.tm-special-item-title {
+    font-size: 1.4rem;
+    margin: 15px 0;
+    color: #3CC;
+}
+
+.tm-special-item-text {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.tm-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.tm-social-link {
+    color: #3CF;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.tm-social-link:hover {
+    color: #96FEFF;
+}
 
 /* Contact */
 .tm-contact-text-container {
@@ -315,6 +367,13 @@ h2 { margin-top: 0; }
     .tm-left, .tm-right { width: 100%; }
     .tm-left { margin-bottom: 50px; }
     .tm-row { display: block; }
+    .tm-special-items {
+        justify-content: center;
+    }
+    
+    .tm-special-item {
+        margin: 15px;
+    }
 }
 
 @media (max-width: 767px) {
@@ -324,6 +383,18 @@ h2 { margin-top: 0; }
     .tm-list-item-img { margin-right: 0; margin-bottom: 15px; }
     .tm-drinks-nav > ul { flex-direction: column; }
     .tm-drinks-nav > ul > li { margin-bottom: 10px; }
+    .tm-special-item {
+        min-width: 240px;
+    }
+    
+    .tm-special-item img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .tm-special-item-title {
+        font-size: 1.2rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -331,6 +402,14 @@ h2 { margin-top: 0; }
     .tm-site-name { margin-top: 10px; }
     .tm-special-item { flex-direction: column; }
     .tm-special-item-description { padding: 20px; }
+    .tm-special-items {
+        padding: 10px;
+    }
+    
+    .tm-special-item {
+        min-width: 100%;
+        margin: 10px 0;
+    }
 }
 
 .tm-main {
