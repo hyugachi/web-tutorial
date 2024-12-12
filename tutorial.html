@@ -6,6 +6,9 @@
     <title>Tutorial</title>
     <link rel="stylesheet" href="css/tutorial.css"> <!-- Gaya CSS Anda -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/monokai.min.css">
+    <link rel="icon" href="img/logo.png" type="image/png"> <!-- Menambahkan favicon -->
+    <link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
+
 
 </head>
 <body>
@@ -35,15 +38,15 @@
                 
                 <section id="instalasi">
                     <h2>Instalasi Nmap</h2>
-                    <p>Untuk menginstal Nmap di sistem Linux berbasis Debian atau Ubuntu, gunakan perintah berikut di terminal:</p>
-                    <div class="code-block">
+                    <p>Untuk menginstal Nmap di sistem Linux berbasis Debian atau Ubuntu, gunakan perintah berikut di Bash:</p>
+                    <div class="code-container">
                         <div class="code-header">
-                            <span class="language">bash</span>
-                            <button class="copy-btn">
-                                <span>Copy</span>
-                            </button>
+                            <span class="language">Bash</span>
+                            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
                         </div>
-                        <pre><code>sudo apt-get update && sudo apt-get install nmap</code></pre>
+                        <div class="code-content">
+                            <code>sudo apt-get update && sudo apt-get install nmap</code>
+                        </div>
                     </div>
                     <p>Untuk sistem operasi lain, kunjungi <a href="https://nmap.org/download.html" style="color: cadetblue;">situs resmi Nmap</a> untuk petunjuk instalasi.</p>
                 </section>
@@ -53,7 +56,7 @@
                     <p>Berikut adalah contoh penggunaan dasar Nmap untuk memindai sebuah alamat IP:</p>
                     <div class="code-container">
                         <div class="code-header">
-                            <span class="language">Terminal</span>
+                            <span class="language">Bash</span>
                             <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
                         </div>
                         <div class="code-content">
@@ -69,7 +72,7 @@
                     <ul>
                         <li><div class="code-container">
                             <div class="code-header">
-                                <span class="language">Terminal</span>
+                                <span class="language">Bash</span>
                                 <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
                             </div>
                             <div class="code-content">
@@ -78,7 +81,7 @@
                         </div> - Mendeteksi versi layanan yang berjalan pada port-port terbuka</li>
                         <li><div class="code-container">
                             <div class="code-header">
-                                <span class="language">Terminal</span>
+                                <span class="language">Bash</span>
                                 <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
                             </div>
                             <div class="code-content">
@@ -87,7 +90,7 @@
                         </div> - Memindai semua 65535 port TCP</li>
                         <li><div class="code-container">
                             <div class="code-header">
-                                <span class="language">Terminal</span>
+                                <span class="language">Bash</span>
                                 <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
                             </div>
                             <div class="code-content">
@@ -96,7 +99,7 @@
                         </div> - Mencoba mendeteksi sistem operasi target</li>
                         <li><div class="code-container">
                             <div class="code-header">
-                                <span class="language">Terminal</span>
+                                <span class="language">Bash</span>
                                 <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
                             </div>
                             <div class="code-content">
@@ -136,7 +139,7 @@
                     <h3>Di Linux (Debian/Ubuntu):</h3>
                     <div class="code-container">
                         <div class="code-header">
-                            <span class="language">Terminal</span>
+                            <span class="language">Bash</span>
                             <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
                         </div>
                         <div class="code-content">
@@ -148,7 +151,7 @@
                     <h3>Di Kali Linux:</h3>
                     <div class="code-container">
                         <div class="code-header">
-                            <span class="language">Terminal</span>
+                            <span class="language">Bash</span>
                             <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
                         </div>
                         <div class="code-content">
@@ -164,7 +167,7 @@
                     <p>Sintaks dasar Hydra sangat straightforward:</p>
                     <div class="code-container">
                         <div class="code-header">
-                            <span class="language">Terminal</span>
+                            <span class="language">Bash</span>
                             <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
                         </div>
                         <div class="code-content">
@@ -176,7 +179,7 @@
                     <ul>
                         <li><div class="code-container">
                             <div class="code-header">
-                                <span class="language">Terminal</span>
+                                <span class="language">Bash</span>
                                 <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
                             </div>
                             <div class="code-content">
@@ -185,7 +188,7 @@
                         </div>: Username tunggal</li>
                         <li><div class="code-container">
                             <div class="code-header">
-                                <span class="language">Terminal</span>
+                                <span class="language">Bash</span>
                                 <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
                             </div>
                             <div class="code-content">
@@ -194,7 +197,7 @@
                         </div>: File daftar username</li>
                         <li><div class="code-container">
                             <div class="code-header">
-                                <span class="language">Terminal</span>
+                                <span class="language">Bash</span>
                                 <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
                             </div>
                             <div class="code-content">

@@ -92,25 +92,38 @@ main {
 
 .code-block {
     position: relative;
-    margin-bottom: 20px;
 }
+
 .copy-btn {
     position: absolute;
-    top: 5px;
-    right: 5px;
-    padding: 5px 10px;
-    font-size: 14px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.5rem;
+    background: transparent;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     cursor: pointer;
-    opacity: 0.8;
-    transition: opacity 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
+
 .copy-btn:hover {
-    opacity: 1;
+    background: rgba(255, 255, 255, 0.1);
 }
+
+.copy-btn.copied {
+    border-color: #4CAF50;
+    color: #4CAF50;
+}
+
+.command-line::before {
+    content: "$";
+    color: #999;
+    margin-right: 1rem;
+    user-select: none;
+}
+
 pre {
     padding: 10px;
     background: #2d2d2d;
@@ -191,51 +204,87 @@ footer {
 
 /* Gaya untuk kontainer kode */
 .code-container {
-    background-color: #282c34; /* Warna latar belakang gelap */
-    border-radius: 8px; /* Sudut membulat */
-    padding: 16px; /* Ruang di dalam kontainer */
-    margin: 1rem 0; /* Jarak atas dan bawah */
-    overflow-x: auto; /* Mengizinkan scroll horizontal jika diperlukan */
+    background-color: #2d2d2d;
+    border-radius: 8px;
+    margin: 1rem 0;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 /* Gaya untuk header kontainer kode */
 .code-header {
-    background-color: #3c4043; /* Warna latar belakang header */
-    color: #ffffff; /* Warna teks putih */
-    padding: 8px 16px; /* Ruang di dalam header */
-    display: flex; /* Menggunakan flexbox untuk tata letak */
-    justify-content: space-between; /* Jarak antara elemen */
-    align-items: center; /* Vertikal center */
+    background-color: #1e1e1e;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #3c3c3c;
+}
+
+.code-header .language {
+    color: #999;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+/* Gaya untuk tombol copy */
+.copy-button {
+    background-color: transparent;
+    border: 1px solid #666;
+    color: #fff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.copy-button:hover {
+    background-color: #666;
+    border-color: #999;
+}
+
+.copy-button.copied {
+    background-color: #28a745;
+    border-color: #28a745;
 }
 
 /* Gaya untuk konten kode */
 .code-content {
-    padding: 16px; /* Ruang di dalam konten */
-    color: #f8f8f2; /* Warna teks untuk kode */
-    font-family: 'Courier New', Courier, monospace; /* Font monospace */
-    font-size: 14px; /* Ukuran font */
+    padding: 1rem;
+    overflow-x: auto;
 }
 
-/* Gaya untuk tag <code> */
-code {
-    background-color: #44475a; /* Warna latar belakang untuk tag <code> */
-    padding: 2px 4px; /* Ruang di dalam tag <code> */
-    border-radius: 4px; /* Sudut membulat */
-    color: #f8f8f2; /* Warna teks */
+.code-content code {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #f8f8f2;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
 }
 
-/* Gaya untuk tombol salin */
-.copy-button {
-    background-color: #50fa7b; /* Warna hijau untuk tombol */
-    color: #282c34; /* Warna teks gelap */
-    border: none; /* Tanpa border */
-    border-radius: 4px; /* Sudut membulat */
-    padding: 4px 8px; /* Ruang di dalam tombol */
-    cursor: pointer; /* Pointer saat hover */
-    transition: background-color 0.3s; /* Transisi halus */
+/* Gaya untuk command line */
+.command-line::before {
+    content: "$";
+    color: #999;
+    margin-right: 1rem;
+    user-select: none;
 }
 
-.copy-button:hover {
-    background-color: #4af626; /* Warna saat hover */
+/* Gaya untuk scrollbar di dalam code block */
+.code-content::-webkit-scrollbar {
+    height: 8px;
+    background-color: #2d2d2d;
+}
+
+.code-content::-webkit-scrollbar-thumb {
+    background-color: #666;
+    border-radius: 4px;
+}
+
+.code-content::-webkit-scrollbar-thumb:hover {
+    background-color: #999;
 }
 
