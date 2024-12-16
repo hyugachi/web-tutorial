@@ -1,3 +1,35 @@
+
+// Fungsi untuk menampilkan section yang sesuai
+function showSection(sectionId) {
+    // Sembunyikan semua section terlebih dahulu
+    const sections = document.querySelectorAll('.tutorial-section');
+    sections.forEach(section => {
+        section.style.display = 'none';
+    });
+
+    // Tampilkan section yang dipilih
+    const selectedSection = document.getElementById(sectionId);
+    if (selectedSection) {
+        selectedSection.style.display = 'block';
+        // Scroll ke bagian atas section
+        selectedSection.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+// Event listener untuk perubahan hash URL
+window.addEventListener('hashchange', function() {
+    const hash = window.location.hash.substring(1);
+    showSection(hash || 'nmap'); // Default to nmap if no hash
+});
+
+// Tampilkan section berdasarkan hash saat halaman dimuat
+document.addEventListener('DOMContentLoaded', function() {
+    const hash = window.location.hash.substring(1);
+    showSection(hash || 'nmap'); // Default to nmap if no hash
+});
+
+
+
 function copyToClipboard(button) {
     // Temukan elemen code terdekat
     const codeBlock = button.closest('.code-container').querySelector('.code-content code');
